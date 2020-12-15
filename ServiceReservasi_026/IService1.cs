@@ -15,7 +15,7 @@ namespace ServiceReservasi_026
         string pemesanan(string IDPemesanan, string NamaCustomer, string NoTelpon, int JumlahPemesanan, string IDLokasi); //method //proses input data
 
         [OperationContract]
-        string editPesanan(string IDPemesanan, string NamaCustomer, string No_telpon);
+        string editPemesanan(string IDPemesanan, string NamaCustomer, string No_telpon);
 
         [OperationContract]
         string deletePemesanan(string IDPemesanan);
@@ -28,6 +28,21 @@ namespace ServiceReservasi_026
 
         [OperationContract]
         List<Pemesanan> Pemesanan();
+
+        [OperationContract]
+        string Login(string username, string password);
+
+        [OperationContract]
+        string Register(string username, string password, string kategori);
+
+        [OperationContract]
+        string DeleteRegister(string username);
+
+        [OperationContract]
+        List<DataRegister> DataRegist();
+
+        [OperationContract]
+        string UpdateRegister(string username, string password, string kategori, int id);
 
         // TODO: Add your service operations here
     }
@@ -82,4 +97,21 @@ namespace ServiceReservasi_026
         public string Lokasi { get; set; }
 
     }
+
+    [DataContract]
+    public class DataRegister
+    {
+        [DataMember(Order = 1)]
+        public int id { get; set; }
+
+        [DataMember(Order = 2)]
+        public string username { get; set; }
+
+        [DataMember(Order = 3)]
+        public string password { get; set; }
+
+        [DataMember(Order = 4)]
+        public string kategori { get; set; }
+    }
+
 }
